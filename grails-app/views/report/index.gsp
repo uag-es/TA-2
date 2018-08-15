@@ -16,6 +16,7 @@
 			</ul>
 		</div>
 		<div id="list-report" class="content scaffold-list" role="main">
+			<g:link controller="Report" action="saveTXT">-> Salvar em TXT</g:link>
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>

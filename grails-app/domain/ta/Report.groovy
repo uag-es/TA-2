@@ -30,9 +30,9 @@ class Report {
 	}
 
 	static constraints = {
-		name unique : true, nullable : false
-		tipo inList: ["Porcentagem", "Media"], nullable: false
-		avaliacao inList: ["MA", "MPA", "MANA"]
+		name unique : true, nullable : false, maxSize : 25
+		tipo inList: ["Porcentagem", "Media"], nullable: false, maxSize : 50
+		avaliacao inList: ["MA", "MPA", "MANA"], maxSize : 50
 	}
 
 	static mapping ={
@@ -41,5 +41,40 @@ class Report {
 	}
 	public String toString() {
 		return "Nome: " + name + " | Tipo: " + tipo + " | Valor: " + valor + " |Avaliação: " + avaliacao
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Report other = (Report) obj;
+		if (avaliacao == null) {
+			if (other.avaliacao != null)
+				return false;
+		} else if (!avaliacao.equals(other.avaliacao))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (students == null) {
+			if (other.students != null)
+				return false;
+		} else if (!students.equals(other.students))
+			return false;
+		if (tipo == null) {
+			if (other.tipo != null)
+				return false;
+		} else if (!tipo.equals(other.tipo))
+			return false;
+		if (Double.doubleToLongBits(valor) != Double
+				.doubleToLongBits(other.valor))
+			return false;
+		return true;
 	}
 }

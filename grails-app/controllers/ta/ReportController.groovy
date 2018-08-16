@@ -116,4 +116,22 @@ class ReportController {
 			'*'{ render status: NOT_FOUND }
 		}
 	}
+	
+	def saveTXT(){
+		def report = Report.list().findAll()
+		StringBuilder sb = new StringBuilder()
+		sb.append("Report List" + "\r\n\r\n")
+		for(Report r : report){
+			if(r != null){
+				sb.append(r.toString())
+				sb.append("\r\n")
+			}
+		}
+		File file = new File("Reports.txt")
+		FileWriter fw = new FileWriter(file.getAbsoluteFile())
+		BufferedWriter bw = new BufferedWriter(fw)
+		bw.write(sb.toString())
+		bw.close()
+		redirect(action: "index")
+	}
 }

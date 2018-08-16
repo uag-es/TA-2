@@ -43,7 +43,7 @@ When(~/^I add the "(.*?)" with tipo "(.*?)" with valor "(.*?)" and avaliacao "(.
 
 }
 
-Then(~/^I can see the report "(.*?)" and the tipo "(.*?)" with valor "(.*?)" and avaliacao "(.*?)" in the list of reports$/) { String name, String tipo, double valor, String avaliacao ->
+Then(~/^I see the report "(.*?)" and the tipo "(.*?)" with valor "(.*?)" and avaliacao "(.*?)" in the list of reports$/) { String name, String tipo, double valor, String avaliacao ->
 	to IndexReport
 	assert page.confirmReport(name, tipo, valor, avaliacao)
 }
